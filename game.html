@@ -21,10 +21,13 @@
     <div class="quiz">
 
         <div class="quiz-content">
+
+            <!-- question start -->
+            
             <div class="question">
                 What is the SUM of
-                <span class="text-info">5</span> and
-                <span class="text-info"> 5 </span>
+                <span class="text-info" id="field1">5</span> and
+                <span class="text-info" id="field2"> 5 </span>
             </div>
 
             <!-- options for answers start -->
@@ -61,18 +64,39 @@
 
     <script>
 
+        // ridldle declared an Object
 
         var riddle = {};
 
+            // function for random number
+
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+
+        }
+
+        // function for random numbers inside question
+
         function playGame() {
 
+            var field1 = randomNumber(20, 50);
+            var field2 = randomNumber(20, 50);
+
             riddle = {
-                field1: 5,
-                field2: 5,
+                field1: field1,
+                field2: field2,
                 resultsArray: [8, 21, 3, 11],
                 answer: 10
             };
+
+            // updated element using JS 
+
+            document.getElementById("field1").innerHTML = riddle.field1;
+            
+            document.getElementById("field2").innerHTML = riddle.field2;
+            console.log(field1);
         }
+
     </script>
 
 </body>
