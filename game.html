@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 
-<body>
+<body onload="playGame()">
 
 
     <div>
@@ -26,21 +26,53 @@
                 <span class="text-info">5</span> and
                 <span class="text-info"> 5 </span>
             </div>
+
+            <!-- options for answers start -->
             <div class="options">
-
                 <div class="fields">
-
-                    <div class="field-block">
+                    <div class="field-block" id="option1">
                         10
                     </div>
                 </div>
+                <div class="fields">
+                    <div class="field-block" id="option2">
+                        10
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field-block" id="option3">
+                        10
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field-block" id="option4">
+                        10
+                    </div>
+
+                </div>
             </div>
+
+            <!-- End -->
+        </div>
+        <div class="play-again">
+            <a class="button">Play Again</a>
         </div>
     </div>
 
     <script>
 
 
+        var riddle = {};
+
+        function playGame() {
+
+            riddle = {
+                field1: 5,
+                field2: 5,
+                resultsArray: [8, 21, 3, 11],
+                answer: 10
+            };
+        }
     </script>
 
 </body>
