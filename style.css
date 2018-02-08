@@ -71,10 +71,11 @@
   .quiz {
     color: #ddd;
     margin: 2%;
-    background-color: #ec1561;
+    background-color: #15ec55;
     padding: 2%;
     width: 90%;
     position: relative;
+    
   }
   
   .button {
