@@ -68,7 +68,7 @@
 
         var riddle = {};
 
-            // function for random number
+        // function for random number
 
         function randomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
@@ -82,6 +82,10 @@
             var field1 = 5; // randomNumber(20, 50);
             var field2 = 5; // randomNumber(20, 50);
 
+            var results = field1 + field2;
+
+            var resultsArray = generateRandomOptions(results);
+
             riddle = {
                 field1: field1,
                 field2: field2,
@@ -92,14 +96,44 @@
             // updated element using JS 
 
             document.getElementById("field1").innerHTML = riddle.field1;
-            
+
             document.getElementById("field2").innerHTML = riddle.field2;
             document.getElementById("option1").innerHTML = riddle.resultsArray[0];
             document.getElementById("option2").innerHTML = riddle.resultsArray[1];
             document.getElementById("option3").innerHTML = riddle.resultsArray[2];
             document.getElementById("option4").innerHTML = riddle.resultsArray[3];
-            console.log(field1);
-            
+            console.log(field1, field1);
+
+        }
+
+        function generateRandomOptions(sum) {
+            var resultsArray = [];
+            var randomNumberArray = [];
+
+
+            while (randomNumberArray.length < 3) {
+                var random = randomNumber(1, 10);
+                if (randomNumberArray.indexOf(random) > -1)
+                    continue;
+                randomNumberArray.push(random);
+            }
+            // testing my values
+            console.log(randomNumberArray, addSubstract);
+
+            for (var i = 0; i < 3; i++) {
+                var addSubstract = randomNumber(0, 1);
+                var results = sum;
+                console.log(addSubstract);
+            }
+
+            if (addSubstract === 1) {
+                // add random number to the results
+            }
+            else {
+                // substract random number from the result
+            }
+
+            return resultsArray;
         }
 
     </script>
