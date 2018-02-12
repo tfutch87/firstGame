@@ -79,12 +79,14 @@
 
         function playGame() {
 
-            var field1 = 5; // randomNumber(20, 50);
-            var field2 = 5; // randomNumber(20, 50);
-            var results = field1 + field2;
+            var field1 = randomNumber(20, 50);
+            var field2 = randomNumber(20, 50);
+            var result = field1 + field2;
 
-            var resultsArray = generateRandomOptions(results);
-            resultsArray.push(results);
+            var resultsArray = generateRandomOptions(result);
+            resultsArray.push(result);
+            resultsArray.sort(function (a, b) { return 0.5 - Math.random() });
+
 
             riddle = {
                 field1: field1,
@@ -94,15 +96,14 @@
             };
 
             // updated element using JS 
-
             document.getElementById("field1").innerHTML = riddle.field1;
             document.getElementById("field2").innerHTML = riddle.field2;
             document.getElementById("option1").innerHTML = riddle.resultsArray[0];
             document.getElementById("option2").innerHTML = riddle.resultsArray[1];
             document.getElementById("option3").innerHTML = riddle.resultsArray[2];
             document.getElementById("option4").innerHTML = riddle.resultsArray[3];
-            console.log(field1, field1);
 
+            console.log(field1, field1);
         }
 
         function generateRandomOptions(sum) {
@@ -112,35 +113,35 @@
 
             while (randomNumberArray.length < 3) {
                 var random = randomNumber(1, 10);
-                if (randomNumberArray.indexOf(random) > -1)
-                    continue;
+                if (randomNumberArray.indexOf(random) > -1) continue;
                 randomNumberArray.push(random);
+
             }
-            // testing my values
-            console.log(randomNumberArray, addSubstract);
+
+            //        console.log(randomNumberArray, addSubstract);
 
             for (var i = 0; i < 3; i++) {
                 var addSubstract = randomNumber(0, 1);
                 var result = sum;
-              //  console.log(addSubstract);
-
+                // console.log(addSubstract);
 
                 if (addSubstract === 1) {
-                    // add random number to the results
 
+                    // add random number to the result
                     result += randomNumberArray[i];
-                }
-                else {
-                    // substract random number from the results
+                } else {
 
+                    // substract random number from result
                     result -= randomNumberArray[i];
                 }
-
-              
+                resultsArray.push(result);
             }
-          //  console.log(resultsArray);
+
+            // console.log(resultsArray);
 
             return resultsArray;
+
+
         }
 
     </script>
