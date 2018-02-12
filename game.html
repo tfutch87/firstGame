@@ -33,22 +33,23 @@
             <!-- options for answers start -->
             <div class="options">
                 <div class="fields">
-                    <div class="field-block" id="option1">
+                    <div class="field-block" id="option1" onclick="checkAnswer(this)">
+
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option2">
+                    <div class="field-block" id="option2" onclick="checkAnswer(this)">
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option3">
+                    <div class="field-block" id="option3" onclick="checkAnswer(this)">
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option4">
+                    <div class="field-block" id="option4" onclick="checkAnswer(this)">
                         10
                     </div>
 
@@ -56,6 +57,9 @@
             </div>
 
             <!-- End -->
+        </div>
+        <div class="after hide" id="after">
+
         </div>
         <div class="play-again">
             <a class="button">Play Again</a>
@@ -79,30 +83,31 @@
 
         function playGame() {
 
-            var field1 = 5; // randomNumber(20, 50);
-            var field2 = 5; // randomNumber(20, 50);
-            var results = field1 + field2;
+            var field1 = randomNumber(20, 50);
+            var field2 = randomNumber(20, 50);
+            var result = field1 + field2;
 
-            var resultsArray = generateRandomOptions(results);
-            resultsArray.push(results);
+            var resultsArray = generateRandomOptions(result);
+            resultsArray.push(result);
+            resultsArray.sort(function (a, b) { return 0.5 - Math.random() });
+
 
             riddle = {
                 field1: field1,
                 field2: field2,
                 resultsArray: resultsArray,
-                answer: 10
+                answer: result
             };
 
             // updated element using JS 
-
             document.getElementById("field1").innerHTML = riddle.field1;
             document.getElementById("field2").innerHTML = riddle.field2;
             document.getElementById("option1").innerHTML = riddle.resultsArray[0];
             document.getElementById("option2").innerHTML = riddle.resultsArray[1];
             document.getElementById("option3").innerHTML = riddle.resultsArray[2];
             document.getElementById("option4").innerHTML = riddle.resultsArray[3];
-            console.log(field1, field1);
 
+            // console.log(field1, field1);
         }
 
         function generateRandomOptions(sum) {
@@ -112,35 +117,58 @@
 
             while (randomNumberArray.length < 3) {
                 var random = randomNumber(1, 10);
-                if (randomNumberArray.indexOf(random) > -1)
-                    continue;
+                if (randomNumberArray.indexOf(random) > -1) continue;
                 randomNumberArray.push(random);
+
             }
-            // testing my values
-            console.log(randomNumberArray, addSubstract);
+
+            //        console.log(randomNumberArray, addSubstract);
 
             for (var i = 0; i < 3; i++) {
                 var addSubstract = randomNumber(0, 1);
                 var result = sum;
-              //  console.log(addSubstract);
-
+                // console.log(addSubstract);
 
                 if (addSubstract === 1) {
-                    // add random number to the results
 
+                    // add random number to the result
                     result += randomNumberArray[i];
-                }
-                else {
-                    // substract random number from the results
+                } else {
 
+                    // substract random number from result
                     result -= randomNumberArray[i];
                 }
-
-              
+                resultsArray.push(result);
             }
-          //  console.log(resultsArray);
+
+            // console.log(resultsArray);
 
             return resultsArray;
+
+
+        }
+
+        function checkAnswer(selectedElement) {
+            console.log(selectedElement.innerHTML);
+            console.log(riddle);
+            var after = document.getElementById('after');
+
+            if (selectedElement.innerHTML == riddle.answer) {
+                // display correct answer
+
+                after.classList.remove("hide");
+                after.classList.add("correct");
+                after.innerHTML = "You got it Correct, Great Job! Select the button below to Play Again";
+
+            } else {
+
+                // not the correct answer
+                after.classList.add("wrong");
+                after.classList.remove("hide");
+                after.innerHTML = "Sorry you've select the wrong answer! Select the button below to Play Again";
+
+            }
+
         }
 
     </script>
