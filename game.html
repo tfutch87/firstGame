@@ -10,8 +10,7 @@
 
 <body onload="playGame()">
 
-
-    <div>
+     <div>
         <h1>Adding Game</h1>
 
         <p id="demo"></p>
@@ -55,15 +54,15 @@
 
                 </div>
             </div>
-
             <!-- End -->
         </div>
         <div class="after hide" id="after">
 
         </div>
         <div class="play-again">
-            <a class="button">Play Again</a>
+            <button class="button" onclick="playAgain()"> Play Again </button>
         </div>
+    </div>
     </div>
 
     <script>
@@ -160,16 +159,31 @@
                 after.classList.add("correct");
                 after.innerHTML = "You got it Correct, Great Job! Select the button below to Play Again";
 
-            } else {
+            }
+
+            else {
 
                 // not the correct answer
                 after.classList.add("wrong");
                 after.classList.remove("hide");
                 after.innerHTML = "Sorry you've select the wrong answer! Select the button below to Play Again";
+                 alert("Sorry Wrong Answer", name);
 
             }
 
         }
+
+       
+        function playAgain() {
+          
+          var after = document.getElementById("after");
+               after.classList.remove("correct");
+               after.classList.remove("wrong");
+               after.classList.add("hide");
+            playGame();
+        }
+
+
 
     </script>
 
