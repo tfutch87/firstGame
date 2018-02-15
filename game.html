@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adding 2 Numbers | Let's Do Addition Together </title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
 </head>
 
 <body onload="playGame()">
 
      <div>
         <h1>Adding Game</h1>
+        <h2>Score</h2>
+        <div class="options">
+                        <div class="score"> 1 </div>
+            <div class="score"> 1 </div>
+        </div>
 
         <p id="demo"></p>
     </div>
@@ -23,7 +30,7 @@
 
             <!-- question start -->
 
-            <div class="question">
+            <div class="question animated bounce">
                 What is the SUM of
                 <span class="text-info" id="field1">5</span> and
                 <span class="text-info" id="field2"> 5 </span>
@@ -32,23 +39,23 @@
             <!-- options for answers start -->
             <div class="options">
                 <div class="fields">
-                    <div class="field-block" id="option1" onclick="checkAnswer(this)">
+                    <div class="field-block animated bounceInRight" id="option1" onclick="checkAnswer(this)">
 
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option2" onclick="checkAnswer(this)">
+                    <div class="field-block animated bounceInRight " id="option2" onclick="checkAnswer(this)">
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option3" onclick="checkAnswer(this)">
+                    <div class="field-block animated bounceInLeft" id="option3" onclick="checkAnswer(this)">
                         10
                     </div>
                 </div>
                 <div class="fields">
-                    <div class="field-block" id="option4" onclick="checkAnswer(this)">
+                    <div class="field-block animated bounceInLeft" id="option4" onclick="checkAnswer(this)">
                         10
                     </div>
 
@@ -56,7 +63,7 @@
             </div>
             <!-- End -->
         </div>
-        <div class="after hide" id="after">
+        <div class="after hide animated" id="after">
 
         </div>
         <div class="play-again">
@@ -157,6 +164,8 @@
 
                 after.classList.remove("hide");
                 after.classList.add("correct");
+                after.classList.remove("slideInDown");
+                after.classList.add("zoomInUp");
                 after.innerHTML = "You got it Correct, Great Job! Select the button below to Play Again";
 
             }
@@ -166,8 +175,9 @@
                 // not the correct answer
                 after.classList.add("wrong");
                 after.classList.remove("hide");
+                after.classList.add("slideInDown");
                 after.innerHTML = "Sorry you've select the wrong answer! Select the button below to Play Again";
-                 alert("Sorry Wrong Answer", name);
+                 // alert("Sorry Wrong Answer", name);
 
             }
 

@@ -52,6 +52,17 @@
     align-items: stretch;
     flex: 1;
   }
+
+  .score {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black; 
+    display: -webkit-flex; /* Safari */
+    display: flex;
+   text-align: center;
+   padding: 12px;
+   margin: 2%;
+  }
   
   .field-block {
     display: flex;
