@@ -15,9 +15,14 @@
      <div>
         <h1>Adding Game</h1>
         <h2>Score</h2>
-        <div class="options">
-                        <div class="score" id="right"> 1 </div> <div class="score" id="wrong"> 1 </div>
-        </div>
+        <div class="score">
+            <div class="score"> Right
+                        <input id="right" value="0" > Wrong
+                       <!-- <input type="text" id="inc" value="0"></input> -->
+                        <input  id="wrong" value="0"> Total
+                        <input  id="total" value="0">
+                    </div>
+                    </div>
 
         <p id="demo"></p>
     </div>
@@ -153,10 +158,15 @@
 
         }
 
+        var rightValue = 0;
+        var wrongValue = 0;
         function checkAnswer(selectedElement) {
             console.log(selectedElement.innerHTML);
             console.log(riddle);
             var after = document.getElementById('after');
+            var right = document.getElementById("right");
+            var wrong = document.getElementById("wrong");
+            
 
             if (selectedElement.innerHTML == riddle.answer) {
                 // display correct answer
@@ -166,7 +176,12 @@
                 after.classList.remove("slideInDown");
                 after.classList.add("zoomInUp");
                 after.innerHTML = "You got it Correct, Great Job! Select the button below to Play Again";
-
+                
+                if (rightValue >= 0){
+                    rightValue++;
+                document.getElementById('right').value = rightValue;
+                }
+                
             }
 
             else {
@@ -177,6 +192,10 @@
                 after.classList.add("slideInDown");
                 after.innerHTML = "Sorry you've select the wrong answer! Select the button below to Play Again";
                  // alert("Sorry Wrong Answer", name);
+                 if (wrongValue >= 0){
+                    wrongValue++;
+                document.getElementById('wrong').value = wrongValue;
+                }
 
             }
 
@@ -190,6 +209,7 @@
                after.classList.remove("wrong");
                after.classList.add("hide");
             playGame();
+            document.getElementById("total").value = wrongValue + rightValue;
         }
 
 
