@@ -11,23 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
 </head>
 
-<body onload="playGame()">
+<body class="background" onload="playGame()">
 
      <div>
-        <h1>Adding Game</h1>
-        <h2>Score</h2>
+        <h1 class="titleColor" >Adding Game</h1>
+        <h2 class="titleColor">Score</h2>
         <div class="score">
-            <div class="score"> Right
-                        <input id="right" value="0" > Wrong
+            <div class="score"> <span class="text-info2">Correct</span>
+                        <input id="right" value="0" > <span class="text-info2"> Wrong</span>
                        <!-- <input type="text" id="inc" value="0"></input> -->
-                        <input  id="wrong" value="0"> Total
+                        <input  id="wrong" value="0"> <span class="text-info2">Total</span>
                         <input  id="total" value="0">
                     </div>
                     </div>
 
         <p id="demo"></p>
     </div>
-    <hr>
+   
 
     <div class="quiz">
 
